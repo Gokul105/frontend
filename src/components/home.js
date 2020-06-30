@@ -28,7 +28,7 @@ export default class Home extends React.Component{
               The system also provides continuous water quality monitoring (digital solution) for stake-holders.
               To know more about this application click the button below.
               </p>
-              <Button color="dark">Learn More</Button>
+              <Button color="primary" size="sm">Learn More</Button>
             </Col>  
             </Row>  
           </Container>
