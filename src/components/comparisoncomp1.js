@@ -1,5 +1,4 @@
 import React from 'react';
-import '../staticfiles/css/comparison.css';
 import axios from 'axios';
 import FullPageLoader2 from './FullPageLoader2';
 import Jumbotron from 'react-bootstrap/Jumbotron';
@@ -16,16 +15,22 @@ export default class Comparisoncomp1 extends React.Component {
    super(props);
    this.state = {
     comparisonresult: [],
+  
     loading:false,
     fetched:false
      }
  }
 
   handleSubmit=()=> {
+    var sampleArray = []
     this.setState({loading:true})
     axios.get(geturl).then(response => {
         console.log(response.data) 
-        this.setState({ comparisonresult: response.data});
+        sampleArray = response.data
+        sampleArray = sampleArray.map(function(each_element){
+          return Number(each_element.toFixed(3));
+      });
+        this.setState({ comparisonresult: sampleArray});
         this.setState({loading:false})
         this.setState({fetched:true})
        })

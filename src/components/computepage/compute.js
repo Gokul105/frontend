@@ -3,7 +3,7 @@ import '../../staticfiles/css/form.css';
 import axios from 'axios';
 import FullPageLoader from '../FullPageLoader';
 
-import Component2 from '../computepage/component2';
+import Component1 from '../computepage/component1';
 import { Container, Row, Col } from 'reactstrap';
 import {Spring} from 'react-spring/renderprops';
 
@@ -177,16 +177,12 @@ export default class Compute extends Component {
       .then(response =>{
           console.log(response.data)
           this.setState({result:response.data})
+          this.setState({fetched:true})
+          this.setState({loading:false})
          
       })
      
-      
-      setTimeout(() => {
-        this.setState({fetched:true})
-        this.setState({loading:false})
-      },5000);
-    
-     this.setState({result:""})
+      this.setState({result:""})
 
 
       }
@@ -271,7 +267,7 @@ render() {
                     </div>
                 </Col>
                 <Col sm="7">
-                {fetched ?(<div><Component2 data={this.state.result}/></div>) :(null)}
+                {fetched ?(<div><Component1 data={this.state.result}/></div>) :(null)}
                 </Col>
             </Row>
         </Container>
